@@ -48,7 +48,7 @@
 
 - (BOOL) textView:(NSTextView *) aTextView doCommandBySelector:(SEL) aSelector {
 	NSEvent * event = [NSApp currentEvent];
-	if(([event modifierFlags] & NSCommandKeyMask)) {
+	if([event keyCode] == 36 && ([event modifierFlags] & NSCommandKeyMask) && !([event modifierFlags] & (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask))) {
 		[self performSelectorOnMainThread:@selector(onok:) withObject:nil waitUntilDone:false];
 		return true;
 	}
